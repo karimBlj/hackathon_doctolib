@@ -25,7 +25,7 @@ headers = {
 }
 
 @app.get("/data_env")
-def data_env(request : Request) -> dict[str,int]:
+def data_env(request : Request) -> dict[str,float]:
 	"""
 	Calculate the mean of the column by region and by year
 	"""
@@ -53,15 +53,14 @@ def data_env(request : Request) -> dict[str,int]:
 	print(region_list)
 	for region in region_list:
 		region_data = DATABASE[DATABASE["Organisme"] == region_translation[region]]["valeur"]
-		result_dict[region] = int(region_data.mean())
+		result_dict[region] = region_data.mean()
 
 
 	return result_dict
 
 if __name__ == "__main__":
 	PORT        = int(argv[1])
-	#PARTICIPANT = argv[2]
-	DATABASE    = pd.read_csv(f'../data/Export Moy. annuelle - NO₂ - 2024.csv', sep=",")
+	DATABASE    = pd.read_csv(f'../data/dataser_env.csv', sep=",")
 	uvicorn.run(app, port=PORT, host="0.0.0.0")
 
 
