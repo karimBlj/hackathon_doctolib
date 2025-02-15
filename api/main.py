@@ -50,6 +50,13 @@ def sum_prats_consults(request : Request) -> tuple[int, int]:
 	amount_of_consultations = sum(DATABASE["total_CS"])
 	return amount_of_practicians, amount_of_consultations
 
+@app.get("/position")
+def position(request : Request) -> tuple[str, str]:
+	"""
+	Return the latitude and longitude of the participant
+	"""
+	return LATITUDE, LONGITUDE
+
 
 @app.get("/avg_specialties_prats_amount_over_years")
 def avg_specialties_prats_amount_over_years(request : Request) -> dict[str, float]:
@@ -78,5 +85,7 @@ def avg_specialties_prats_amount_over_years(request : Request) -> dict[str, floa
 if __name__ == "__main__":
 	PORT        = int(argv[1])
 	PARTICIPANT = argv[2]
+	LATITUDE    = argv[3]
+	LONGITUDE   = argv[4]
 	DATABASE    = pd.read_csv(f'../../sub_datasets/{PARTICIPANT}.tsv', sep="\t")
 	uvicorn.run(app, port=PORT, host="0.0.0.0")
