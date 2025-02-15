@@ -19,6 +19,10 @@ export async function requestForHostpitals(
     callback : any
 )
 {
-    const res = Promise.all(Object.values(hospitals).map(port => callback(port)))
-    return res
+    const res = Object.values(hospitals).map(async port => {
+        const callRes =  await callback(port);
+        return callRes
+    })
+    console.log(res);
+    return Promise.all(res)
 }
