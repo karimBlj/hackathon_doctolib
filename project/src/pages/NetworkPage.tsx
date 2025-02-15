@@ -1,16 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-import { Server, Cpu, MemoryStick as Memory, Network, Activity, Users, Globe2, Shield, X } from 'lucide-react';
-
-const data = [
-  { time: '00:00', nodes: 156 },
-  { time: '04:00', nodes: 142 },
-  { time: '08:00', nodes: 164 },
-  { time: '12:00', nodes: 185 },
-  { time: '16:00', nodes: 197 },
-  { time: '20:00', nodes: 178 },
-  { time: '24:00', nodes: 156 },
-];
+import { Server, Cpu, MemoryStick as Memory, Network, Activity, Users, Globe2, Shield, X} from 'lucide-react';
+import Scorecard from '../components/Scorecard';
+import MyBarChart from '../components/MyBarChart';
+import { requestMean } from '../requests/api_query';
+// import MyLineChart from '../components/MyLineChart';
 
 const serverStats = {
   cpu: '78%',
@@ -103,10 +96,13 @@ const connections = [
 ];
 
 function NetworkPage() {
-  const [transform, setTransform] = useState({ x: 0, y: 0, scale: 1 });
-  const [isDragging, setIsDragging] = useState(false);
-  const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
+  const [transform,    setTransform   ] = useState({ x: 0, y: 0, scale: 1 });
+  const [isDragging,   setIsDragging  ] = useState(false);
+  const [dragStart,    setDragStart   ] = useState({ x: 0, y: 0 });
   const [selectedNode, setSelectedNode] = useState<typeof peerConnections[0] | null>(null);
+
+  const [mean, setMean] = useState<any>();
+  
   const svgRef = useRef<SVGSVGElement>(null);
 
   const handleWheel = (e: React.WheelEvent) => {
@@ -149,6 +145,10 @@ function NetworkPage() {
     e.stopPropagation(); // Prevent dragging when clicking nodes
     setSelectedNode(peer);
   };
+
+  useEffect(() => {
+    requestMean().then(res => setMean(res));
+  }, [])
 
   useEffect(() => {
     window.addEventListener('mouseup', handleMouseUp);
@@ -214,41 +214,18 @@ function NetworkPage() {
 
         {/* Network Graph */}
         <div className="lg:col-span-2">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <Scorecard title= 'Mean' value = {mean}/>
+            <Scorecard title= 'Mean' value = "3"/>
+            <Scorecard title= 'Mean' value = "3"/>
+          </div>
           <div className="bg-slate-800/50 backdrop-blur-sm rounded-xl p-6 border border-slate-700">
             <h2 className="text-xl font-semibold mb-6 flex items-center gap-2">
               <Activity className="h-5 w-5 text-purple-400" />
               Network Activity
             </h2>
             <div className="h-[400px]">
-              <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={data}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
-                  <XAxis 
-                    dataKey="time" 
-                    stroke="#94a3b8"
-                    tick={{ fill: '#94a3b8' }}
-                  />
-                  <YAxis 
-                    stroke="#94a3b8"
-                    tick={{ fill: '#94a3b8' }}
-                  />
-                  <Tooltip 
-                    contentStyle={{
-                      backgroundColor: '#1e293b',
-                      border: '1px solid #475569',
-                      borderRadius: '0.5rem',
-                    }}
-                    labelStyle={{ color: '#94a3b8' }}
-                  />
-                  <Line 
-                    type="monotone" 
-                    dataKey="nodes" 
-                    stroke="#a855f7" 
-                    strokeWidth={2}
-                    dot={{ fill: '#a855f7', strokeWidth: 2 }}
-                  />
-                </LineChart>
-              </ResponsiveContainer>
+              <MyBarChart/>
             </div>
           </div>
 
@@ -276,21 +253,21 @@ function NetworkPage() {
                     return (
                       <g key={index}>
                         <line
-                          x1={from.x}
-                          y1={from.y}
-                          x2={to.x}
-                          y2={to.y}
+                          x1 = {from.x}
+                          y1 = {from.y}
+                          x2 = {to.x}
+                          y2 = {to.y}
                           stroke="#a855f7"
                           strokeWidth="2"
                           strokeDasharray="4"
                           className="animate-pulse"
                         />
                         <text
-                          x={(from.x + to.x) / 2}
-                          y={(from.y + to.y) / 2}
-                          fill="#94a3b8"
-                          textAnchor="middle"
-                          className="text-xs"
+                          x          = {(from.x + to.x) / 2}
+                          y          = {(from.y + to.y) / 2}
+                          fill       = "#94a3b8"
+                          textAnchor = "middle"
+                          className  = "text-xs"
                         >
                           {connection.latency}
                         </text>

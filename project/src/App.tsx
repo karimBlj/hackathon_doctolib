@@ -71,7 +71,7 @@ function App() {
                   >
                     Network
                   </Link>
-                  <Link 
+                  {/* <Link 
                     to="/database" 
                     className="text-xl font-semibold text-slate-300 hover:text-white hover:translate-x-2 transition-all"
                     onClick={() => setIsMenuOpen(false)}
@@ -91,8 +91,8 @@ function App() {
                     onClick={() => setIsMenuOpen(false)}
                   >
                     IAM
-                  </Link>
-                  <a 
+                  </Link> */}
+                  {/* <a 
                     href="#" 
                     className="text-xl font-semibold text-slate-300 hover:text-white hover:translate-x-2 transition-all"
                   >
@@ -104,7 +104,7 @@ function App() {
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Settings
-                  </Link>
+                  </Link> */}
                 </nav>
               </div>
             </div>
