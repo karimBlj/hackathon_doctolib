@@ -16,7 +16,10 @@ const serverStats = {
 };
 
 
-function NetworkPage() {
+function NetworkPage()
+{
+  const [newPeerCo, setNewPeerCo] = useState<any[]>([]);
+
   const [transform,    setTransform   ] = useState({ x: 0, y: 0, scale: 1 });
   const [isDragging,   setIsDragging  ] = useState(false);
   const [dragStart,    setDragStart   ] = useState({ x: 0, y: 0 });
@@ -69,13 +72,12 @@ function NetworkPage() {
     setSelectedNode(peer);
   };
 
-  let NewPeerCo: any[] = []
-
   useEffect(() => {
     requestHospitalsPistion().then(res =>
       {
         console.log(res);
-        NewPeerCo = res
+
+        setNewPeerCo(res);
         // console.log(res);
         // peerConnections.forEach(element => {
         //   const newX = res.get(element.id)!.x
@@ -184,6 +186,7 @@ function NetworkPage() {
               >
                 <g transform={`translate(${transform.x}, ${transform.y}) scale(${transform.scale})`}>
                   {/* Connection Lines */}
+                  {/*
                   {connections.map((connection, index) => {
                     const from = peerConnections.find(p => p.id === connection.from);
                     const to = peerConnections.find(p => p.id === connection.to);
@@ -213,34 +216,38 @@ function NetworkPage() {
                       </g>
                     );
                   })}
+                  */}
 
                   {/* Nodes */}
-                  {peerConnections.map((peer) => (
-                    <g 
-                      key={peer.id}
-                      // onClick={(e) => handleNodeClick(peer, e)}
-                      className="cursor-pointer"
-                    >
-                      <circle
-                        cx={peer.x}
-                        cy={peer.y}
-                        r={peer.id === 'your-node' ? 30 : 20}
-                        fill={peer.id === 'your-node' ? '#a855f7' : '#1e293b'}
-                        stroke="#a855f7"
-                        strokeWidth="2"
-                        className={`animate-pulse transition-all duration-200 ${selectedNode?.id === peer.id ? 'stroke-white stroke-[3]' : ''}`}
-                      />
-                      <text
-                        x={peer.x}
-                        y={peer.y + 40}
-                        textAnchor="middle"
-                        fill="#94a3b8"
-                        className="text-sm"
+                  {/*peerConnections*/newPeerCo.map((peer) => 
+                  {
+                    return (
+                      <g 
+                        key={peer.id}
+                        // onClick={(e) => handleNodeClick(peer, e)}
+                        className="cursor-pointer"
                       >
-                        {peer.id}
-                      </text>
-                    </g>
-                  ))}
+                        <circle
+                          cx={peer.x}
+                          cy={peer.y}
+                          r={peer.id === 'your-node' ? 30 : 20}
+                          fill={peer.id === 'your-node' ? '#a855f7' : '#1e293b'}
+                          stroke="#a855f7"
+                          strokeWidth="2"
+                          className={`animate-pulse transition-all duration-200 ${selectedNode?.id === peer.id ? 'stroke-white stroke-[3]' : ''}`}
+                        />
+                        <text
+                          x={peer.x}
+                          y={peer.y + 40}
+                          textAnchor="middle"
+                          fill="#94a3b8"
+                          className="text-sm"
+                        >
+                          {peer.id}
+                        </text>
+                      </g>
+                    )
+                  })}
                 </g>
               </svg>
 
