@@ -37,5 +37,5 @@ def sum_prats_consults(request : Request) -> tuple[int, int]:
 if __name__ == "__main__":
 	PORT        = int(argv[1])
 	PARTICIPANT = argv[2]
-	DATABASE    = pd.read_csv(f'../../sub_datasets/{PARTICIPANT}.tsv', sep="\t")
+	DATABASE    = pd.read_csv(f'../sub_datasets/{PARTICIPANT}.tsv', sep="\t")
 	uvicorn.run(app, port=PORT, host="0.0.0.0")

@@ -147,7 +147,7 @@ function NetworkPage() {
   };
 
   useEffect(() => {
-    requestMean().then(res => setMean(res));
+    requestMean().then(res => setMean(res.toFixed(2)));
   }, [])
 
   useEffect(() => {
@@ -215,7 +215,7 @@ function NetworkPage() {
         {/* Network Graph */}
         <div className="lg:col-span-2">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <Scorecard title= 'Mean' value = {mean}/>
+            <Scorecard title= 'Mean Visit/doc' value = {mean}/>
             <Scorecard title= 'Mean' value = "3"/>
             <Scorecard title= 'Mean' value = "3"/>
           </div>
