@@ -4,7 +4,7 @@ export async function requestHostpitalMean(
     hospitalPort : string
 )
 {
-    const url = `${process.env.REACT_APP_BASE_URL}:${hospitalPort}/mean/`;
+    const url = `${process.env.REACT_APP_BASE_URL}:${hospitalPort}/sum_prats_consults/`;
 
     return fetch(url, {
         method: 'POST',
