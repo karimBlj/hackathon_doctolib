@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-slate-900;
+}
+
+/* Split Pane Styles */
+.Resizer {
+  background: #475569;
+  opacity: 0.2;
+  z-index: 1;
+  box-sizing: border-box;
+  background-clip: padding-box;
+}
+
+.Resizer:hover {
+  opacity: 1;
+  transition: all 0.2s ease;
+}
+
+.Resizer.horizontal {
+  height: 4px;
+  margin: -2px 0;
+  cursor: row-resize;
+}
+
+.Resizer.vertical {
+  width: 4px;
+  margin: 0 -2px;
+  cursor: col-resize;
+}
