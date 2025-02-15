@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Server, Cpu, MemoryStick as Memory, Network, Activity, Users, Globe2, Shield, X} from 'lucide-react';
 import Scorecard                        from '../components/Scorecard';
 import MyBarChart                       from '../components/MyBarChart';
-import { requestMean }                  from '../requests/api_query';
+import { requestAvgSpecialties, requestHospitalsPistion, requestMean }                  from '../requests/api_query';
 import { connections, peerConnections } from '../requests/network';
 // import MyLineChart from '../components/MyLineChart';
 
@@ -23,6 +23,8 @@ function NetworkPage() {
   const [selectedNode, setSelectedNode] = useState<typeof peerConnections[0] | null>(null);
 
   const [mean, setMean] = useState<any>();
+  const [meanCardio, setMeanCardio] = useState<any>();
+  const [meanDentist, setMeanDentist] = useState<any>();
   
   const svgRef = useRef<SVGSVGElement>(null);
 
@@ -67,15 +69,23 @@ function NetworkPage() {
     setSelectedNode(peer);
   };
 
+  let NewPeerCo: any[] = []
+
   useEffect(() => {
-    // const coordinates = generateGraphCoordinates(peerConnections, connections);
-    // console.log(coordinates);
-    // peerConnections.forEach(element => {
-    //   const newX = coordinates[element.id].x
-    //   const newY = coordinates[element.id].y
-    //   element.x = newX;
-    //   element.y = newY;
-    // });
+    requestHospitalsPistion().then(res =>
+      {
+        console.log(res);
+        NewPeerCo = res
+        // console.log(res);
+        // peerConnections.forEach(element => {
+        //   const newX = res.get(element.id)!.x
+        //   const newY = res.get(element.id)!.y
+        //   element.x = newX;
+        //   element.y = newY;
+        // });
+      }
+    )
+    requestAvgSpecialties().then(res => {setMeanCardio(res.cardio.toFixed(2)); setMeanDentist(res.dentist.toFixed(2))});
     requestMean().then(res => setMean(res.toFixed(2)));
   }, [])
 
@@ -145,8 +155,8 @@ function NetworkPage() {
         <div className="lg:col-span-2">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             <Scorecard title= 'Mean Visit/doc' value = {mean}/>
-            <Scorecard title= 'Mean' value = "3"/>
-            <Scorecard title= 'Mean' value = "3"/>
+            <Scorecard title= 'Mean Visit/cardiologists' value = {meanCardio}/>
+            <Scorecard title= 'Mean Visit/dentist'       value = {meanDentist}/>
           </div>
           <div className="bg-slate-800/50 backdrop-blur-sm rounded-xl p-6 border border-slate-700">
             <h2 className="text-xl font-semibold mb-6 flex items-center gap-2">
@@ -208,7 +218,7 @@ function NetworkPage() {
                   {peerConnections.map((peer) => (
                     <g 
                       key={peer.id}
-                      onClick={(e) => handleNodeClick(peer, e)}
+                      // onClick={(e) => handleNodeClick(peer, e)}
                       className="cursor-pointer"
                     >
                       <circle
@@ -227,7 +237,7 @@ function NetworkPage() {
                         fill="#94a3b8"
                         className="text-sm"
                       >
-                        {peer.label}
+                        {peer.id}
                       </text>
                     </g>
                   ))}
