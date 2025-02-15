@@ -1,30 +1,11 @@
 import { hospitals, requestForHostpitals } from "./network";
+import { executeQuery } from "./utils";
 
 export async function requestHostpitalMean(
     hospitalPort : string
 )
 {
-    // const url = `${process.env.REACT_APP_BASE_URL}:${hospitalPort}/sum_prats_consults/`;
-    const url = `http://127.0.0.1:${hospitalPort}/sum_prats_consults`;
-
-    return fetch(
-		url,
-		{
-			mode: "cors",
-			headers: {
-				"Content-Type": "application/json",
-			}
-		}
-	).then(response => {
-		if (!response.ok) {
-			const errorMessage = response.text()
-			// throw new Error(`HTTP error! Status: ${response.statusText}, Message: ${errorMessage}`);
-            return [0, 0]
-		}
-		return response.json()
-	}).then(data => {
-		return data;
-	})
+	return executeQuery("sum_prats_consults", hospitalPort)
 }
 
 
@@ -34,4 +15,39 @@ export async function requestMean()
     const reduced = meanList.reduce((prev, current) => [prev[0] + current[0], prev[1] + current[1]], [0, 0])
     const res = reduced[1]/reduced[0]
     return res
+}
+
+export async function requestAvgSpecialtiesPratsAmountOverYears(
+	hospitalPort : string
+)
+{
+	return executeQuery("avg_specialties_prats_amount_over_years", hospitalPort)
+}
+
+export async function requestAvgSpecialties()
+{
+	const dictsList = await requestForHostpitals(requestAvgSpecialtiesPratsAmountOverYears)
+	// console.log(dictsList)
+	const meanCardio  = dictsList.reduce((prev, current) => prev + current.cardiologists, 0)
+	const meanDentist = dictsList.reduce((prev, current) => prev + current.dentists, 0)
+	return {cardio : meanCardio, dentist : meanDentist}
+}
+
+export async function requestHospitalPosition(
+	hospitalPort : string
+)
+{
+	return executeQuery("metadata", hospitalPort)
+}
+
+export async function requestHospitalsPistion()
+{
+	const hostPositions = await requestForHostpitals(requestHospitalPosition)
+	// console.log(hostPositions)
+	const res = hostPositions.map(value => ({id : value[0], x: parseInt(value[1]) * 10, y: parseInt(value[2]) * 10}))
+	// const res = new Map<string, { x: number; y: number }>(
+	// 	hostPositions.map(([name, x, y]) => [name, { x, y }])
+	//   )
+	return res
+	
 }
