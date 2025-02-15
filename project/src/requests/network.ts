@@ -196,7 +196,21 @@ export const hospitals = [
     },
 ]
 
-export const peerConnections = [
+export type PeerCo = {
+    id : string,
+    label : string,
+    x : number,
+    y : number,
+    region : string,
+    status : string,
+    uptime : string,
+    cpu : string,
+    memory : string,
+    bandwidth : string,
+    connectedPeers : number,
+    lastSeen : string,
+}
+export const peerConnections : PeerCo[] = [
     { 
       id: 'your-node',
       label: 'Your Node',

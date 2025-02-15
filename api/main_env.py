@@ -45,7 +45,7 @@ def data_env(request : Request) -> dict[str,float]:
         'Bretagne' : "AIR BREIZH",
         'Bourgogne-Franche-Comte' : "ATMO BOURGOGNE-FRANCHE-COMTE",
         'Corse' : "QUALITAIR CORSE",
-            }
+    }
 	
 	region_list = list(region_translation.keys())
 

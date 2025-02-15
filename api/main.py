@@ -51,11 +51,11 @@ def sum_prats_consults(request : Request) -> tuple[int, int]:
 	return amount_of_practicians, amount_of_consultations
 
 @app.get("/metadata")
-def metadata(request : Request) -> tuple[str, int, int]:
+def metadata(request : Request) -> tuple[str, float, float]:
 	"""
 	Return the name, latitude and longitude of the participant
 	"""
-	return PARTICIPANT, int(LATITUDE), int(LONGITUDE)
+	return PARTICIPANT, float(LATITUDE), float(LONGITUDE)
 
 
 @app.get("/avg_specialties_prats_amount_over_years")
