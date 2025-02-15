@@ -1,8 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Server, Cpu, MemoryStick as Memory, Network, Activity, Users, Globe2, Shield, X} from 'lucide-react';
-import Scorecard from '../components/Scorecard';
-import MyBarChart from '../components/MyBarChart';
-import { requestMean } from '../requests/api_query';
+import Scorecard                        from '../components/Scorecard';
+import MyBarChart                       from '../components/MyBarChart';
+import { requestMean }                  from '../requests/api_query';
+import { connections, peerConnections } from '../requests/network';
 // import MyLineChart from '../components/MyLineChart';
 
 const serverStats = {
@@ -14,86 +15,6 @@ const serverStats = {
   uptime: '99.99%',
 };
 
-// Enhanced peer data with more details
-const peerConnections = [
-  { 
-    id: 'your-node',
-    label: 'Your Node',
-    x: 400,
-    y: 300,
-    region: 'EUR-WEST',
-    status: 'Active',
-    uptime: '99.99%',
-    cpu: '45%',
-    memory: '8.2 GB / 16 GB',
-    bandwidth: '850 MB/s',
-    connectedPeers: 4,
-    lastSeen: 'Now'
-  },
-  { 
-    id: 'peer1',
-    label: 'Peer 1 (US-WEST)',
-    x: 200,
-    y: 150,
-    region: 'US-WEST',
-    status: 'Active',
-    uptime: '99.95%',
-    cpu: '32%',
-    memory: '6.8 GB / 16 GB',
-    bandwidth: '620 MB/s',
-    connectedPeers: 3,
-    lastSeen: '2s ago'
-  },
-  { 
-    id: 'peer2',
-    label: 'Peer 2 (ASIA-EAST)',
-    x: 600,
-    y: 150,
-    region: 'ASIA-EAST',
-    status: 'Active',
-    uptime: '99.87%',
-    cpu: '28%',
-    memory: '5.4 GB / 16 GB',
-    bandwidth: '580 MB/s',
-    connectedPeers: 5,
-    lastSeen: '1s ago'
-  },
-  { 
-    id: 'peer3',
-    label: 'Peer 3 (EUR-CENTRAL)',
-    x: 200,
-    y: 450,
-    region: 'EUR-CENTRAL',
-    status: 'Active',
-    uptime: '99.92%',
-    cpu: '38%',
-    memory: '7.1 GB / 16 GB',
-    bandwidth: '720 MB/s',
-    connectedPeers: 6,
-    lastSeen: '3s ago'
-  },
-  { 
-    id: 'peer4',
-    label: 'Peer 4 (AUS-EAST)',
-    x: 600,
-    y: 450,
-    region: 'AUS-EAST',
-    status: 'Active',
-    uptime: '99.85%',
-    cpu: '42%',
-    memory: '9.3 GB / 16 GB',
-    bandwidth: '480 MB/s',
-    connectedPeers: 4,
-    lastSeen: '5s ago'
-  },
-];
-
-const connections = [
-  { from: 'your-node', to: 'peer1', latency: '45ms' },
-  { from: 'your-node', to: 'peer2', latency: '120ms' },
-  { from: 'your-node', to: 'peer3', latency: '25ms' },
-  { from: 'your-node', to: 'peer4', latency: '150ms' },
-];
 
 function NetworkPage() {
   const [transform,    setTransform   ] = useState({ x: 0, y: 0, scale: 1 });
@@ -147,6 +68,14 @@ function NetworkPage() {
   };
 
   useEffect(() => {
+    // const coordinates = generateGraphCoordinates(peerConnections, connections);
+    // console.log(coordinates);
+    // peerConnections.forEach(element => {
+    //   const newX = coordinates[element.id].x
+    //   const newY = coordinates[element.id].y
+    //   element.x = newX;
+    //   element.y = newY;
+    // });
     requestMean().then(res => setMean(res.toFixed(2)));
   }, [])
 
