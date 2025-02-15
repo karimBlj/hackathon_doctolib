@@ -1,0 +1,13 @@
+python3.10 main.py 8000 Auvergne-Rhones-Alpes &
+python3.10 main.py 8001 Bourgogne-Franche-Comte &
+python3.10 main.py 8002 Bretagne &
+python3.10 main.py 8003 Centre-Val-De-Loire &
+python3.10 main.py 8004 Corse &
+python3.10 main.py 8005 Grand-Est &
+python3.10 main.py 8006 Hauts-De-France &
+python3.10 main.py 8007 Ile-De-France &
+python3.10 main.py 8008 Normandie &
+python3.10 main.py 8009 Nouvelle-Aquitaine &
+python3.10 main.py 8010 Occitanie &
+python3.10 main.py 8011 Pays-De-La-Loire &
+python3.10 main.py 8012 Provence-Alpes-Cote-D-Azur &
