@@ -282,7 +282,25 @@ export const peerConnections : PeerCo[] = [
       lastSeen: '5s ago'
     },
   ];
+
+export const connections = [
+    { from: 'Auvergne-Rhones-Alpes', to: 'Bourgogne-Franche-Comte', latency: '42ms' },
+    { from: 'Auvergne-Rhones-Alpes', to: 'Provence-Alpes-Cote-D-Azur', latency: '67ms' },
+    { from: 'Bretagne', to: 'Pays-De-La-Loire', latency: '25ms' },
+    { from: 'Centre-Val-De-Loire', to: 'Ile-De-France', latency: '18ms' },
+    { from: 'Centre-Val-De-Loire', to: 'Normandie', latency: '33ms' },
+    { from: 'Corse', to: 'Provence-Alpes-Cote-D-Azur', latency: '58ms' },
+    { from: 'Grand-Est', to: 'Hauts-De-France', latency: '27ms' },
+    { from: 'Grand-Est', to: 'Ile-De-France', latency: '37ms' },
+    { from: 'Nouvelle-Aquitaine', to: 'Occitanie', latency: '20ms' },
+    { from: 'Nouvelle-Aquitaine', to: 'Pays-De-La-Loire', latency: '29ms' },
+    { from: 'Occitanie', to: 'Provence-Alpes-Cote-D-Azur', latency: '31ms' },
+    { from: 'Ile-De-France', to: 'Normandie', latency: '22ms' },
+    { from: 'Bourgogne-Franche-Comte', to: 'Grand-Est', latency: '35ms' },
+    { from: 'Hauts-De-France', to: 'Normandie', latency: '30ms' },
+  ];
   
+/*
 export const connections = [
     { from: 'your-node', to: 'peer1', latency: '45ms' },
     { from: 'your-node', to: 'peer2', latency: '120ms' },
@@ -290,7 +308,20 @@ export const connections = [
     { from: 'your-node', to: 'peer4', latency: '150ms' },
   ];
 
-
+  "Auvergne-Rhones-Alpes"
+  "Bourgogne-Franche-Comte"
+  "Bretagne"
+  "Centre-Val-De-Loire"
+  "Corse"
+  "Grand-Est"
+  "Hauts-De-France"
+  "Ile-De-France"
+  "Normandie"
+  "Nouvelle-Aquitaine"
+  "Occitanie"
+  "Pays-De-La-Loire"
+  "Provence-Alpes-Cote-D-Azur"
+*/
 export function generateGraphCoordinates(nodes: Array<any>, connections: Array<any>){
     // Initialize node positions randomly within a defined space
     const positions: Record<string, any> = {};
