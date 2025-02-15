@@ -42,9 +42,11 @@ export async function requestHospitalPosition(
 
 export async function requestHospitalsPistion()
 {
+	const spread = 50;
+
 	const hostPositions = await requestForHostpitals(requestHospitalPosition)
 	// console.log(hostPositions)
-	const res = hostPositions.map(value => ({id : value[0], x: parseInt(value[1]) * 10, y: parseInt(value[2]) * 10}))
+	const res = hostPositions.map(value => ({id : value[0], x: parseInt(value[1]) * spread, y: parseInt(value[2]) * spread}))
 	// const res = new Map<string, { x: number; y: number }>(
 	// 	hostPositions.map(([name, x, y]) => [name, { x, y }])
 	//   )

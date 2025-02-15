@@ -20,7 +20,7 @@ function NetworkPage()
 {
   const [newPeerCo, setNewPeerCo] = useState<any[]>([]);
 
-  const [transform,    setTransform   ] = useState({ x: 0, y: 0, scale: 1 });
+  const [transform,    setTransform   ] = useState({ x: -1100, y: 90, scale: .6 });
   const [isDragging,   setIsDragging  ] = useState(false);
   const [dragStart,    setDragStart   ] = useState({ x: 0, y: 0 });
   const [selectedNode, setSelectedNode] = useState<typeof peerConnections[0] | null>(null);
@@ -186,10 +186,10 @@ function NetworkPage()
               >
                 <g transform={`translate(${transform.x}, ${transform.y}) scale(${transform.scale})`}>
                   {/* Connection Lines */}
-                  {/*
+                  
                   {connections.map((connection, index) => {
-                    const from = peerConnections.find(p => p.id === connection.from);
-                    const to = peerConnections.find(p => p.id === connection.to);
+                    const from = newPeerCo.find(p => p.id === connection.from);
+                    const to = newPeerCo.find(p => p.id === connection.to);
                     if (!from || !to) return null;
 
                     return (
@@ -216,7 +216,7 @@ function NetworkPage()
                       </g>
                     );
                   })}
-                  */}
+
 
                   {/* Nodes */}
                   {/*peerConnections*/newPeerCo.map((peer) => 
