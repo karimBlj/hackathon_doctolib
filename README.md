@@ -36,7 +36,7 @@ The frontend will run on http://localhost:5173 by default.
 🛠️ Technologies Used
 
     Backend: Python, FastAPI
-    Frontend: React, Next.js
+    Frontend: ReactTS, Vite
 
 📌 Notes
 
