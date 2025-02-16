@@ -1,6 +1,7 @@
 # **Nebula Federated Cloud**  
 
-This project provides a **machine learning-powered API** and a **frontend interface** to predict lung cancer using a **Random Forest model**. 
+This project provides a mock **federated anlytics API and platform** and a **frontend interface** to predict lung cancer.
+
 ## **🚀 Getting Started**  
 
 ### **1️⃣ Backend (API) Setup**
@@ -13,9 +14,11 @@ This project provides a **machine learning-powered API** and a **frontend interf
 ```bash
 cd api
 pip install -r requirements.txt  # Install dependencies
-bash launch_all_regions.sh       # Start the API
+bash launch_all_regions.sh       # Start the simulated different agents
 ```
-2️⃣ Frontend Setup
+
+### 2️⃣ Frontend Setup
+
 Prerequisites
 
     Node.js 16+
@@ -32,19 +35,13 @@ The frontend will run on http://localhost:5173 by default.
 
 🛠️ Technologies Used
 
-    Backend: Python, FastAPI/Flask
+    Backend: Python, FastAPI
     Frontend: React, Next.js
-    Machine Learning: Random Forest Classifier
 
 📌 Notes
 
     Ensure the backend is running before starting the frontend.
     Modify API URLs in the frontend config if needed.
-
-💡 Contributions & issues are welcome! 🚀
-
-
-Save this content as `README.md` in your project folder. Let me know if you need modifications! 🚀
 
 
 ## **🔎 Concept Overview**
