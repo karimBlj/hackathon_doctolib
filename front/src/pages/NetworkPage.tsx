@@ -168,7 +168,7 @@ function NetworkPage()
           <div className="bg-slate-800/50 backdrop-blur-sm rounded-xl p-6 border border-slate-700">
             <h2 className="text-xl font-semibold mb-6 flex items-center gap-2">
               <Activity className="h-5 w-5 text-purple-400" />
-              Network Activity
+              Cancer vs NO2
             </h2>
             <div className="h-[400px]">
               <MyBarChart data = {envData}/>

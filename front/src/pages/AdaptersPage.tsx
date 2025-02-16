@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { Play, Pause, Clock, Cpu, MemoryStick, Network, Search, Plus, Filter, MoreVertical, RefreshCw } from 'lucide-react';
+import { useState } from 'react';
+import { Play, Search, Plus, MoreVertical, X } from 'lucide-react';
 
 // Sample adapter data
 const adapters = [
   {
     id: 'adapter-1',
-    name: 'Data Sync Service',
+    name: 'Random Forest - Lung Cancer',
     runtime: 'Node.js 18',
     status: 'Running',
     region: 'EUR-WEST',
@@ -18,7 +18,7 @@ const adapters = [
   },
   {
     id: 'adapter-2',
-    name: 'Image Processing',
+    name: 'Logistic Regression - Lung Cancer',
     runtime: 'Python 3.9',
     status: 'Running',
     region: 'US-EAST',
@@ -31,7 +31,7 @@ const adapters = [
   },
   {
     id: 'adapter-3',
-    name: 'Email Notification',
+    name: 'Mean consultency / region',
     runtime: 'Node.js 18',
     status: 'Stopped',
     region: 'ASIA-EAST',
@@ -42,19 +42,19 @@ const adapters = [
     invocations: 2341,
     errors: 5,
   },
-  {
-    id: 'adapter-4',
-    name: 'Analytics Pipeline',
-    runtime: 'Python 3.9',
-    status: 'Running',
-    region: 'EUR-WEST',
-    memory: '2048 MB',
-    timeout: '300s',
-    lastInvoked: 'Just now',
-    avgDuration: '45.2s',
-    invocations: 432,
-    errors: 1,
-  },
+  // {
+  //   id: 'adapter-4',
+  //   name: 'Analytics Pipeline',
+  //   runtime: 'Python 3.9',
+  //   status: 'Running',
+  //   region: 'EUR-WEST',
+  //   memory: '2048 MB',
+  //   timeout: '300s',
+  //   lastInvoked: 'Just now',
+  //   avgDuration: '45.2s',
+  //   invocations: 432,
+  //   errors: 1,
+  // },
 ];
 
 function AdaptersPage() {
@@ -62,10 +62,12 @@ function AdaptersPage() {
   const [selectedRuntime, setSelectedRuntime] = useState('all');
   const [selectedRegion, setSelectedRegion] = useState('all');
 
+  const [popupData, setPopupData] = useState<any>(null);
+
   const filteredAdapters = adapters.filter(adapter => {
     const matchesSearch = adapter.name.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesRuntime = selectedRuntime === 'all' || adapter.runtime === selectedRuntime;
-    const matchesRegion = selectedRegion === 'all' || adapter.region === selectedRegion;
+    const matchesRegion  = selectedRegion  === 'all' || adapter.region  === selectedRegion;
     return matchesSearch && matchesRuntime && matchesRegion;
   });
 
@@ -120,10 +122,10 @@ function AdaptersPage() {
             <thead>
               <tr className="border-b border-slate-700">
                 <th className="px-6 py-4 text-left text-sm font-semibold text-slate-300">Name</th>
-                <th className="px-6 py-4 text-left text-sm font-semibold text-slate-300">Runtime</th>
+                {/* <th className="px-6 py-4 text-left text-sm font-semibold text-slate-300">Runtime</th> */}
                 <th className="px-6 py-4 text-left text-sm font-semibold text-slate-300">Status</th>
                 <th className="px-6 py-4 text-left text-sm font-semibold text-slate-300">Region</th>
-                <th className="px-6 py-4 text-left text-sm font-semibold text-slate-300">Memory</th>
+                {/* <th className="px-6 py-4 text-left text-sm font-semibold text-slate-300">Memory</th> */}
                 <th className="px-6 py-4 text-left text-sm font-semibold text-slate-300">Last Invoked</th>
                 <th className="px-6 py-4 text-left text-sm font-semibold text-slate-300">Metrics</th>
                 <th className="px-6 py-4 text-center text-sm font-semibold text-slate-300">Actions</th>
@@ -138,11 +140,11 @@ function AdaptersPage() {
                       <div className="text-sm text-slate-400">Timeout: {adapter.timeout}</div>
                     </div>
                   </td>
-                  <td className="px-6 py-4">
+                  {/* <td className="px-6 py-4">
                     <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-400/10 text-blue-400">
                       {adapter.runtime}
                     </span>
-                  </td>
+                  </td> */}
                   <td className="px-6 py-4">
                     <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
                       adapter.status === 'Running' 
@@ -155,9 +157,9 @@ function AdaptersPage() {
                   <td className="px-6 py-4">
                     <span className="text-slate-300">{adapter.region}</span>
                   </td>
-                  <td className="px-6 py-4">
+                  {/* <td className="px-6 py-4">
                     <span className="text-slate-300">{adapter.memory}</span>
-                  </td>
+                  </td> */}
                   <td className="px-6 py-4">
                     <span className="text-slate-300">{adapter.lastInvoked}</span>
                   </td>
@@ -181,7 +183,7 @@ function AdaptersPage() {
                   </td>
                   <td className="px-6 py-4">
                     <div className="flex items-center justify-center space-x-2">
-                      {adapter.status === 'Running' ? (
+                      {/* {adapter.status === 'Running' ? (
                         <button className="p-1 hover:bg-slate-700 rounded" title="Stop">
                           <Pause className="h-4 w-4 text-slate-400" />
                         </button>
@@ -189,7 +191,51 @@ function AdaptersPage() {
                         <button className="p-1 hover:bg-slate-700 rounded" title="Start">
                           <Play className="h-4 w-4 text-slate-400" />
                         </button>
-                      )}
+                      )} */}
+                      <button
+                        className = "p-1 hover:bg-slate-700 rounded" title="Start"
+                        onClick={() => setPopupData({
+                          "model_name": "Random Forest - Lung Cancer",
+                          "algorithm": "Random Forest",
+                          "dataset": "Lung Cancer Diagnosis Dataset",
+                          "num_trees": 150,
+                          "max_depth": 12,
+                          "min_samples_split": 4,
+                          "min_samples_leaf": 2,
+                          "accuracy": 94.2,
+                          "feature_importance": {
+                            "Smoking History": 0.35,
+                            "Age": 0.20,
+                            "Genetics": 0.18,
+                            "Environmental Exposure": 0.15,
+                            "Occupational Hazards": 0.07,
+                            "Previous Lung Diseases": 0.05
+                          },
+                          "training_parameters": {
+                            "train_test_split": 0.8,
+                            "cross_validation_folds": 5,
+                            "random_state": 42
+                          },
+                          "performance_metrics": {
+                            "precision": 92.5,
+                            "recall": 90.8,
+                            "f1_score": 91.6,
+                            "auc_roc": 97.1
+                          },
+                          "deployment_info": {
+                            "runtime": "Node.js 18",
+                            "status": "Running",
+                            "region": "EUR-WEST",
+                            "memory": "512 MB",
+                            "timeout": "30s",
+                            "lastInvoked": "2 minutes ago",
+                            "invocations": 1243,
+                            "errors": 2
+                          }
+                        })}
+                      >
+                        <Play className="h-4 w-4 text-slate-400" />
+                      </button>
                       <button className="p-1 hover:bg-slate-700 rounded" title="More">
                         <MoreVertical className="h-4 w-4 text-slate-400" />
                       </button>
@@ -201,6 +247,21 @@ function AdaptersPage() {
           </table>
         </div>
       </div>
+      {popupData && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-gray-900 text-white p-6 rounded-lg w-96">
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-lg font-semibold">Random Forest Model Info</h2>
+              <button onClick={() => setPopupData(null)}>
+                <X className="h-5 w-5 text-gray-400 hover:text-white" />
+              </button>
+            </div>
+            <pre className="bg-gray-800 p-4 rounded-lg text-sm overflow-auto max-h-60">
+              {JSON.stringify(popupData, null, 2)}
+            </pre>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
