@@ -1,0 +1,34 @@
+Presentation
+
+- Tout le monde veut faire de l'IA, mais l'IA a avant tout besoin de data. Dans le monde de la médecine, l'accès à la donnée est un des points le plus difficiles.
+
+- En France, sérieux problème parce qu'on souhaiterait pouvoir avoir des statistiques nationales, mais on n'arrive pas à:
+	- fédérer les acteurs, ni public, ni privés, ni ensemble
+	- rendre cohérents les différents systèmes
+	- assurer la sécurité des données
+	- lier ces données à d'autres domaine reliés (social et environnemental)
+
+Points forts:
+	- extensible en scope (environnement, social)
+	- extensible en scale (France, Europe, WHO)
+	- partenariats public-privé
+
+- Notre solution: une plateforme de fédération, Nebula, qui permet:
+	- aux acteurs de partager leurs données de manière sécurisée
+	- de construire des contrats de cohérence entre attributs
+	- de les rendre accessibles à des chercheurs et des entreprises
+	- faire du fine-tuning ou produire des modèles par fédération
+
+- Méthodo
+
+- Démo
+
+
+
+
+interopérabilité
+owkin (algos open source)
+OMOP
+déduplication
+configurable niveau auth et algo autorisés
+CNIL dit fédéré ok entre HDS
