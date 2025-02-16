@@ -2,33 +2,32 @@ Presentation
 
 - Tout le monde veut faire de l'IA, mais l'IA a avant tout besoin de data. Dans le monde de la médecine, l'accès à la donnée est un des points le plus difficiles.
 
-- En France, sérieux problème parce qu'on souhaiterait pouvoir avoir des statistiques nationales, mais on n'arrive pas à:
-	- fédérer les acteurs, ni public, ni privés, ni ensemble
-	- rendre cohérents les différents systèmes
-	- assurer la sécurité des données
+- En France, sérieux problème parce qu'on souhaiterait pouvoir avoir des statistiques nationales, mais on n'arrive ni à:
+	- fédérer les acteurs — ni public entre eux, ni privés entre eux, ni les deux ensemble
+	- rendre cohérents les différents systèmes ou modèles de données
 	- lier ces données à d'autres domaine reliés (social et environnemental)
 
-Points forts:
-	- extensible en scope (environnement, social)
-	- extensible en scale (France, Europe, WHO)
-	- partenariats public-privé
+Notre solution: une plateforme d'infrastructure pour l'édification de fédérations, Nebula, qui permet:
+	- interopérabilité massive
+	- partager les données de manière sécurisée (gestion IAM au point de donnée ou au type de calcul près)
+	- construire des contrats de cohérence entre attributs pour faire des datasets fédérés
 
-- Notre solution: une plateforme de fédération, Nebula, qui permet:
-	- aux acteurs de partager leurs données de manière sécurisée
-	- de construire des contrats de cohérence entre attributs
-	- de les rendre accessibles à des chercheurs et des entreprises
-	- faire du fine-tuning ou produire des modèles par fédération
-
-- Méthodo
+- Méthodo:
+	- algos in-house: exemple hashmap / histogrammes
+	- adapters (microservices permettant de granulariser l'accès au calcul ou données)
+	- recycler des choses existantes:
+		-> owkin; librairie federated open source pour le médical
+		-> déduplication centralisée et décentralisée (ATra; >5 ans)
+	- commencer par des formats standardisés style OMOP
 
 - Démo
 
-
-
-
-interopérabilité
-owkin (algos open source)
-OMOP
-déduplication
-configurable niveau auth et algo autorisés
-CNIL dit fédéré ok entre HDS
+- Points forts:
+	- extensible en scope (environnement, social)
+	- extensible en scale (France, Europe, WHO)
+	- partenariats public-privé
+	- est un système souverain ET qui peut collaborer à l'internationale
+	- rend accessibles ces données à des chercheurs et des entreprises plus simplement
+	- fait du fine-tuning ou produire des modèles par fédération
+	- gros travail, mais on apporte de la valeur en offrant de nouveaux aggrégats de donnée
+	- cautionnée par la CNIL
