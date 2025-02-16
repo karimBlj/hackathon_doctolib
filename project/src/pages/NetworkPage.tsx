@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Server, Cpu, MemoryStick as Memory, Network, Activity, Users, Globe2, Shield, X} from 'lucide-react';
 import Scorecard                        from '../components/Scorecard';
 import MyBarChart                       from '../components/MyBarChart';
-import { requestAvgSpecialties, requestHospitalsPistion, requestMean }                  from '../requests/api_query';
+import { requestAvgSpecialties, requestEnvironementData, requestHospitalsPistion, requestMean }                  from '../requests/api_query';
 import { connections, peerConnections } from '../requests/network';
 // import MyLineChart from '../components/MyLineChart';
 
@@ -28,6 +28,11 @@ function NetworkPage()
   const [mean, setMean] = useState<any>();
   const [meanCardio, setMeanCardio] = useState<any>();
   const [meanDentist, setMeanDentist] = useState<any>();
+  const [envData, setEnvData] = useState<{
+    range     : string;
+    categoryA : number;
+    categoryB : number;
+  }[]>([]);
   
   const svgRef = useRef<SVGSVGElement>(null);
 
@@ -73,11 +78,11 @@ function NetworkPage()
   };
 
   useEffect(() => {
+    requestEnvironementData().then(res => {setEnvData(res); console.log(res)});
     requestHospitalsPistion().then(res =>
       {
         console.log(res);
-
-        setNewPeerCo(res);
+        setNewPeerCo(res.filter(val => val.id !== 0))
         // console.log(res);
         // peerConnections.forEach(element => {
         //   const newX = res.get(element.id)!.x
@@ -166,7 +171,7 @@ function NetworkPage()
               Network Activity
             </h2>
             <div className="h-[400px]">
-              <MyBarChart/>
+              <MyBarChart data = {envData}/>
             </div>
           </div>
 
