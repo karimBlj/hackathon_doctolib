@@ -284,10 +284,23 @@ export const peerConnections : PeerCo[] = [
   ];
   
 export const connections = [
-    { from: 'your-node', to: 'peer1', latency: '45ms' },
-    { from: 'your-node', to: 'peer2', latency: '120ms' },
-    { from: 'your-node', to: 'peer3', latency: '25ms' },
-    { from: 'your-node', to: 'peer4', latency: '150ms' },
+    {from: "Auvergne-Rhones-Alpes"  , to : "Auvergne-Rhones-Alpes" , latency : "1ms"},
+    {from: "Bourgogne-Franche-Comte"  , to : "Bourgogne-Franche-Comte" , latency : "1ms"},
+    {from: "Bretagne"  , to : "Bretagne" , latency : "1ms"},
+    {from: "Centre-Val-De-Loire"  , to : "Centre-Val-De-Loire" , latency : "1ms"},
+    {from: "Corse"  , to : "Corse" , latency : "1ms"},
+    {from: "Grand-Est"  , to : "Grand-Est" , latency : "1ms"},
+    {from: "Hauts-De-France"  , to : "Hauts-De-France" , latency : "1ms"},
+    {from: "Ile-De-France"  , to : "Ile-De-France" , latency : "1ms"},
+    {from: "Normandie"  , to : "Normandie" , latency : "1ms"},
+    {from: "Nouvelle-Aquitaine"  , to : "Nouvelle-Aquitaine" , latency : "1ms"},
+    {from: "Occitanie"  , to : "Occitanie" , latency : "1ms"},
+    {from: "Pays-De-La-Loire"  , to : "Pays-De-La-Loire" , latency : "1ms"},
+    {from: "Provence-Alpes-Cote-D-Azur" , to : "Provence-Alpes-Cote-D-Azur", latency : "1ms"},
+    // { from: 'your-node', to: 'peer1', latency: '45ms' },
+    // { from: 'your-node', to: 'peer2', latency: '120ms' },
+    // { from: 'your-node', to: 'peer3', latency: '25ms' },
+    // { from: 'your-node', to: 'peer4', latency: '150ms' },
   ];
 
 

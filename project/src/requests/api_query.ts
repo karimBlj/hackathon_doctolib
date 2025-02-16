@@ -27,7 +27,7 @@ export async function requestAvgSpecialtiesPratsAmountOverYears(
 export async function requestAvgSpecialties()
 {
 	const dictsList = await requestForHostpitals(requestAvgSpecialtiesPratsAmountOverYears)
-	// console.log(dictsList)
+	console.log(dictsList)
 	const meanCardio  = dictsList.reduce((prev, current) => prev + current.cardiologists, 0)
 	const meanDentist = dictsList.reduce((prev, current) => prev + current.dentists, 0)
 	return {cardio : meanCardio, dentist : meanDentist}
@@ -44,10 +44,14 @@ export async function requestHospitalsPistion()
 {
 	const hostPositions = await requestForHostpitals(requestHospitalPosition)
 	// console.log(hostPositions)
-	const res = hostPositions.map(value => ({id : value[0], x: parseInt(value[1]) * 10, y: parseInt(value[2]) * 10}))
+	const res = hostPositions.map(value => ({id : value[0], x: parseInt(value[1]) * 25, y: parseInt(value[2]) * 25}))
 	// const res = new Map<string, { x: number; y: number }>(
 	// 	hostPositions.map(([name, x, y]) => [name, { x, y }])
 	//   )
-	return res
-	
+	return res;
+}
+
+export async function requestEnvironementData()
+{
+	return executeQuery("data_env", "8013")
 }
