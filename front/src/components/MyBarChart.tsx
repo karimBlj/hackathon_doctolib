@@ -42,8 +42,8 @@ function MyBarChart(datas: any)
 
         <Tooltip />
         <Legend /> {/* Displays category labels */}
-        <Bar yAxisId="left" dataKey="environement" fill="#8884d8" barSize={30}  name="environement" />
-        <Bar yAxisId="right" dataKey="cardiologists" fill="#82ca9d" barSize={30} name="cardiologists" />
+        <Bar yAxisId = "left"  dataKey = "environement"  fill="#8884d8" barSize={30} name="pollution" />
+        <Bar yAxisId = "right" dataKey = "cardiologists" fill="#82ca9d" barSize={30} name="cancer" />
       </BarChart>
     </ResponsiveContainer>
   )

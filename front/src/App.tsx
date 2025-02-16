@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import { Menu, X, Database, Server, User, Cpu, Shield } from 'lucide-react';
+import { Menu, X, Server, User, Orbit } from 'lucide-react';
 import NetworkPage from './pages/NetworkPage';
-import DatabasePage from './pages/DatabasePage';
-import SettingsPage from './pages/SettingsPage';
 import AdaptersPage from './pages/AdaptersPage';
-import IAMPage from './pages/IAMPage';
+import "./logo_white_empty_fill.png"
 
-function App() {
+function App()
+{
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -28,8 +27,8 @@ function App() {
 
                 {/* Logo */}
                 <div className="flex items-center space-x-2">
-                  <Database className="h-8 w-8 text-purple-400" />
-                  <span className="text-2xl font-bold">NexusCloud</span>
+                  <Orbit className="h-8 w-8 text-purple-400" />
+                  <span className="text-2xl font-bold">Nebula</span>
                 </div>
               </div>
 
@@ -71,13 +70,6 @@ function App() {
                   >
                     Network
                   </Link>
-                  {/* <Link 
-                    to="/database" 
-                    className="text-xl font-semibold text-slate-300 hover:text-white hover:translate-x-2 transition-all"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    Database
-                  </Link> */}
                   <Link 
                     to="/adapters" 
                     className="text-xl font-semibold text-slate-300 hover:text-white hover:translate-x-2 transition-all"
@@ -85,26 +77,6 @@ function App() {
                   >
                     Adapters
                   </Link>
-                  {/* <Link 
-                    to="/iam" 
-                    className="text-xl font-semibold text-slate-300 hover:text-white hover:translate-x-2 transition-all"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    IAM
-                  </Link>
-                  <a 
-                    href="#" 
-                    className="text-xl font-semibold text-slate-300 hover:text-white hover:translate-x-2 transition-all"
-                  >
-                    Analytics
-                  </a>
-                  <Link 
-                    to="/settings" 
-                    className="text-xl font-semibold text-slate-300 hover:text-white hover:translate-x-2 transition-all"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    Settings
-                  </Link> */}
                 </nav>
               </div>
             </div>
@@ -115,10 +87,7 @@ function App() {
         <main className="pt-20">
           <Routes>
             <Route path="/" element={<NetworkPage />} />
-            <Route path="/database" element={<DatabasePage />} />
-            <Route path="/settings" element={<SettingsPage />} />
             <Route path="/adapters" element={<AdaptersPage />} />
-            <Route path="/iam" element={<IAMPage />} />
           </Routes>
         </main>
       </div>
