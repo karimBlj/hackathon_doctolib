@@ -32,19 +32,19 @@ def data_env(request : Request) -> dict[str,float]:
 
 
 	region_translation = {
-        'Ile-De-France' :"AIRPARIF",
+        'Ile-De-France'              : "AIRPARIF",
         'Provence-Alpes-Cote-D-Azur' : "ATMO SUD",
-        'Auvergne-Rhones-Alpes' : "ATMO AUVERGNE-RHÔNE-ALPES",
-        'Nouvelle-Aquitaine' : "ATMO NOUVELLE-AQUITAINE",
-        'Occitanie' : "ATMO OCCITANIE",
-        'Hauts-De-France' : "ATMO HAUTS DE FRANCE",
-        'Grand-Est' : "ATMO GRAND EST",
-        'Centre-Val-De-Loire' : "LIG'AIR",
-        'Pays-De-La-Loire' : "AIR PAYS DE LA LOIRE",
-        'Normandie' : "ATMO NORMANDIE",
-        'Bretagne' : "AIR BREIZH",
-        'Bourgogne-Franche-Comte' : "ATMO BOURGOGNE-FRANCHE-COMTE",
-        'Corse' : "QUALITAIR CORSE",
+        'Auvergne-Rhones-Alpes'      : "ATMO AUVERGNE-RHÔNE-ALPES",
+        'Nouvelle-Aquitaine'         : "ATMO NOUVELLE-AQUITAINE",
+        'Occitanie'                  : "ATMO OCCITANIE",
+        'Hauts-De-France'            : "ATMO HAUTS DE FRANCE",
+        'Grand-Est'                  : "ATMO GRAND EST",
+        'Centre-Val-De-Loire'        : "LIG'AIR",
+        'Pays-De-La-Loire'           : "AIR PAYS DE LA LOIRE",
+        'Normandie'                  : "ATMO NORMANDIE",
+        'Bretagne'                   : "AIR BREIZH",
+        'Bourgogne-Franche-Comte'    : "ATMO BOURGOGNE-FRANCHE-COMTE",
+        'Corse'                      : "QUALITAIR CORSE",
     }
 	
 	region_list = list(region_translation.keys())
@@ -60,7 +60,7 @@ def data_env(request : Request) -> dict[str,float]:
 
 if __name__ == "__main__":
 	PORT        = int(argv[1])
-	DATABASE    = pd.read_csv(f'../data/dataser_env.csv', sep=",")
+	DATABASE    = pd.read_csv(f'../data/dataset_env.csv', sep=",")
 	uvicorn.run(app, port=PORT, host="0.0.0.0")
 
 

@@ -77,7 +77,7 @@ function App() {
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Database
-                  </Link>
+                  </Link> */}
                   <Link 
                     to="/adapters" 
                     className="text-xl font-semibold text-slate-300 hover:text-white hover:translate-x-2 transition-all"
@@ -85,14 +85,14 @@ function App() {
                   >
                     Adapters
                   </Link>
-                  <Link 
+                  {/* <Link 
                     to="/iam" 
                     className="text-xl font-semibold text-slate-300 hover:text-white hover:translate-x-2 transition-all"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     IAM
-                  </Link> */}
-                  {/* <a 
+                  </Link>
+                  <a 
                     href="#" 
                     className="text-xl font-semibold text-slate-300 hover:text-white hover:translate-x-2 transition-all"
                   >
