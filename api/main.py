@@ -87,5 +87,5 @@ if __name__ == "__main__":
 	PARTICIPANT = argv[2]
 	LATITUDE    = argv[3]
 	LONGITUDE   = argv[4]
-#	DATABASE    = pd.read_csv(f'../../sub_datasets/{PARTICIPANT}.tsv', sep="\t")
+	DATABASE    = pd.read_csv(f'../../sub_datasets/{PARTICIPANT}.tsv', sep="\t")
 	uvicorn.run(app, port=PORT, host="0.0.0.0")
