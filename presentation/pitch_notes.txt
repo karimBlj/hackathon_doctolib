@@ -1,3 +1,5 @@
+FR:
+
 Presentation
 
 - Tout le monde veut faire de l'IA, mais l'IA a avant tout besoin de data. Dans le monde de la médecine, l'accès à la donnée est un des points le plus difficiles.
@@ -28,6 +30,44 @@ Notre solution: une plateforme d'infrastructure pour l'édification de fédérat
 	- partenariats public-privé
 	- est un système souverain ET qui peut collaborer à l'internationale
 	- rend accessibles ces données à des chercheurs et des entreprises plus simplement
-	- fait du fine-tuning ou produire des modèles par fédération
+	- fait du fine-tuning par fédération
 	- gros travail, mais on apporte de la valeur en offrant de nouveaux aggrégats de donnée
 	- cautionnée par la CNIL
+
+
+
+EN:
+
+Presentation
+
+- Everyone wants to do AI, but AI needs data first and foremost. In the world of medicine, access to data is one of the most difficult issues.
+
+- In France, the problem is serious, because we'd like to be able to have nationwide statistics, but we can't manage to:
+	- federate the players - neither public actors, nor private actors, nor both together (e.g. HDH)
+	- make coherent the various data systems and the models they contain
+	- link these data to other related fields (social and environmental).
+
+Our solution: Nebula, an infrastructure platform for building federations (P2P cloud), which enables:
+	- massive interoperability
+	- secure data sharing (IAM management down to the last data point or calculation type)
+	- building feature consistency contracts to make federated datasets
+
+- Methodology:
+	- in-house algorithms: e.g. hashmap / histograms
+	- adapters (microservices to granularize access to computation or data)
+	- recycle existing stuff:
+		-> owkin; federated open source library for medical applications
+		-> centralized and decentralized deduplication (Georgetown ATra; >5 years)
+	- start with standardized formats like OMOP and allow people to create and share standards easily
+
+- Demo
+
+- Strong points:
+	- extensible in scope (environmental, social)
+	- scalable (France, Europe, WHO)
+	- enables public-private partnerships
+	- is a sovereign system AND can collaborate internationally
+	- makes data more easily accessible to researchers and companies
+	- enables fine-tuning through federation
+	- can bbuild new data aggregates
+	- CNIL-approved methodology (2023 report)
