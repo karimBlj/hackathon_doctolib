@@ -43,6 +43,12 @@ The frontend will run on http://localhost:5173 by default.
     Ensure the backend is running before starting the frontend.
     Modify API URLs in the frontend config if needed.
 
+### 3️⃣ Data Setup
+
+Go to the `data` folder. Run `mkdir sub_datasets`.
+
+Run `python3 divide_dataset.py` with the DoctoLib dataset named as `dataset.xlsx` in the `data` folder as well.
+
 
 ## **🔎 Concept Overview**
 For a more detailed presentation refer to the folder presentation.
