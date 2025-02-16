@@ -55,4 +55,4 @@ The goal of this project is to offer a federated platform to share information b
 The shared information will contain the needed information to train models without containing any PII.
 For example we can allow hospitals to share the amount of patients with cancer, and correlate it to environmental data to train prediction models, and compute correlations.
 
-![Demo](presentation/demo.gif)
+![Demo](./presentation/demo.gif)
